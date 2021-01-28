@@ -2,6 +2,11 @@
 
 @section('content')
     <div class="container mt-4">
+    <div class="mb-4">
+    <a href="{{ route('posts.create') }}" class="btn btn-primary">
+        投稿を新規作成する
+    </a>
+</div>
         @foreach ($posts as $post)
             <div class="card mb-4">
                 <div class="card-header">
@@ -12,6 +17,10 @@
                         <!-- {!! nl2br(e(str_limit($post->body, 200))) !!} -->
                         {!! nl2br(e(Str::limit($post->body, 200))) !!}
                     </p>
+
+                    <a class="card-link" href="{{ route('posts.show', ['post' => $post]) }}">
+                        続きを読む
+                    </a>
                 </div>
                 <div class="card-footer">
                     <span class="mr-2">
