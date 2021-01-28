@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'App\Http\Controllers\PostsController@index')->name('top');
 Route::resource('posts', 'App\Http\Controllers\PostsController', ['only' => ['create', 'store', 'show']]);
+Route::resource('comments', 'CommentsController', ['only' => ['store']]);
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });
