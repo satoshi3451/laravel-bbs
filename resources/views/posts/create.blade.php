@@ -10,6 +10,10 @@
             <form method="POST" action="{{ route('posts.store') }}">
                 @csrf
 
+                {{ Auth::id() }}
+@if( Auth::check() )
+                <input id="user_id" name="user_id" type="hidden" value="{{ Auth::id() }}">
+@endif
                 <fieldset class="mb-4">
                     <div class="form-group">
                         <label for="title">

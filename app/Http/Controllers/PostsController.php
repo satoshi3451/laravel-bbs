@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Post;
 
@@ -22,13 +23,23 @@ class PostsController extends Controller
     
     public function store(Request $request)
     {
-        $params = $request->validate([
-            'title' => 'required|max:50',
-            'body' => 'required|max:2000',
-        ]);
+        // $user_id = Auth::id();
+        // // $params = $request->validate([
+        //     'title' => 'required|max:50',
+        //     'body' => 'required|max:2000',
+        //     'user_id' => $user_id,
+        // ]);
+        // $params = $request;
+
+        // Post::create($params);
     
-        Post::create($params);
-    
+        // return redirect()->route('top');
+        $post = new Post;
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->user_id=$request->user_id;
+
+        $post->save();
         return redirect()->route('top');
     }
     
